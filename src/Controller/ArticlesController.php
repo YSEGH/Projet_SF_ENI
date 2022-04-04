@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticlesController extends AbstractController
+class CategoryArticlesController extends AbstractController
 {
     #[Route('/articles', name: 'app_articles')]
     public function index(): Response
