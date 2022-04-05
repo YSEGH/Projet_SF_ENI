@@ -1,6 +1,88 @@
+.content {
+  display: flex;
+  flex: auto;
+  padding: 0 2rem 0 0;
+}
+.content a {
+  text-decoration: none;
+}
+.content ul {
+  margin: 0;
+  padding: 0;
+}
+.content ul li {
+  list-style-type: none;
+}
+.content ul li.category a {
+  display: block;
+  width: fit-content;
+  padding: 0 0.25rem;
+  color: #fff;
+  border-radius: 4px;
+  background-color: rgb(245, 204, 71);
+  text-transform: capitalize;
+  margin: 0.5rem 0 1rem 0;
+  transition: 0.25s;
+}
+.content ul li.category a:hover {
+  background-color: rgb(184, 150, 38);
+}
+
+/* Filtres */
+.filters_container {
+  width: 20rem;
+  padding: 0 2rem;
+  border-right: 1px solid rgba(211, 211, 211, 0.308);
+}
+.filters_container h1 {
+  font-weight: 400;
+}
+.filters_container .filters ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.filters_container .filters ul li {
+  margin: 0.25rem;
+}
+
+.filters_container .range {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.filters_container .range input {
+  width: 4rem;
+  height: 3rem;
+  margin-right: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+.filters_container .range button.submit {
+  height: 3rem;
+  width: 3rem;
+  background-color: rgb(247, 75, 75);
+  color: #fff;
+  border: none;
+  transition: 0.25s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filters_container .range button.submit:hover {
+  background-color: rgb(214, 50, 50);
+}
+.filters_container .range button.submit img {
+  height: 2rem;
+  width: 2rem;
+  object-fit: contain;
+}
+/* Items */
 .items_container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 0 0 2rem;
 }

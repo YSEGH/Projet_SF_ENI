@@ -14,6 +14,12 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+input {
+  border: 1px solid lightgray;
+}
 /* Header */
 header {
   position: absolute;
@@ -80,7 +86,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  padding: 5rem 10rem;
+  padding: 10rem 0;
 }
 
 /* Footer */

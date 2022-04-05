@@ -1,19 +1,18 @@
 .item {
   height: fit-content;
-  width: 20rem;
+  width: 18rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  margin: 2rem;
 }
-.item a {
-  text-decoration: none;
-}
+
 .item img {
   height: 10rem;
-  width: 20rem;
+  width: 18rem;
   object-fit: cover;
 }
 .item .add_to_cart {
