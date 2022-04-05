@@ -1,7 +1,10 @@
 .form {
+  height: 100%;
   width: 20rem;
+  margin: auto;
 }
 .form h1 {
+  font-weight: 400;
   text-align: center;
 }
 .form div {
@@ -18,8 +21,17 @@
 .form div input {
   width: 100%;
   padding: 0.5rem;
+  border: 1px solid lightgray;
 }
 .form div button {
   width: 100%;
   padding: 0.5rem;
+  background-color: #ff9933;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 300;
+}
+.form p {
+  text-align: center;
 }
