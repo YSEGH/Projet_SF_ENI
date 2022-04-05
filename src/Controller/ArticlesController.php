@@ -20,16 +20,6 @@ class ArticlesController extends AbstractController
     #[Route('/list/page/{page}', name: 'app_list_page', requirements: ['page' => '\d+'])]
     public function page(ArticleRepository $repo, $page = 0): Response
     {
-        /*$maxItemByPage = 10;
-        $offset = $page * $maxItemByPage;
-        $nbItem= $repo->countItems();
-        $lastPage = intdiv($nbItem,$maxItemByPage);
-
-        if($nbItem % $maxItemByPage === 0){
-            $lastPage--;
-        }
-        $items = $repo->findBy(['id' => true], ['price'=>'DESC'], $maxItemByPage, $offset);
-        */
         $maxItemByPage = 1;
         $items = $repo->findWithLimit($page, $maxItemByPage);
         return $this->render('articles/index.html.twig', compact('items', 'page'));
@@ -39,9 +29,9 @@ class ArticlesController extends AbstractController
     #[Route('/list/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo): Response
     {
-        $article = $repo->find($id);
-        if (!$article)
+        $items = $repo->find($id);
+        if (!$items)
             throw $this->createNotFoundException();
-        return $this->render('articles/detail.html.twig', compact('article'));
+        return $this->render('articles/detail.html.twig', compact('items'));
     }
 }
