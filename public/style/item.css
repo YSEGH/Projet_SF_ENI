@@ -34,6 +34,7 @@
   color: #fff;
 }
 .item ul {
+  width: 100%;
   margin: 0;
   padding: 1rem;
 }
@@ -64,8 +65,8 @@
   display: block;
 
   color: black;
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1.75rem;
+  font-weight: 300;
 }
 
 .item ul li.description {
@@ -78,6 +79,6 @@
 
   color: black;
   font-size: 2.25rem;
-  font-weight: 500;
+  font-weight: 400;
   text-align: right;
 }
