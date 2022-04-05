@@ -7,8 +7,11 @@
 {% block title %}{{controller_name}}{% endblock %}
 
 {% block body %}
-{{
-    form(form_register)
-}}
-<p>Déja un compte ? <a href="{{path('app_login')}}">Me connecter.</a></p>
+
+    {{form_start(form_register)}}
+    <h1>Inscription</h1>
+    {{form_widget(form_register)}}
+    <p>Déja un compte ? <a href="{{path('app_login')}}">Me connecter.</a></p>
+    {{ form_end(form_register)}}
+
 {% endblock %}

@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
-
+{% block css %}
+    <link rel="stylesheet" href="style/form.css">
+{% endblock %}
 {% block title %}
     {{controller_name}}
 {% endblock %}
 
-{% block css %}
-    <link rel="stylesheet" href="style/form.css">
-{% endblock %}
+
 
 {% block body %}
         {% if error %}
             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
         <form class='form' action="{{ path('app_login') }}" method="post">
-
+            <h1>Connexion</h1>
             <div>
                 <label for="username">Email</label>
                 <input type="text" id="username" name="_username" value="{{ lastUsername }}">

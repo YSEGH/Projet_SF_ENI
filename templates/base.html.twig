@@ -9,33 +9,42 @@
         {# Title #}
         <title>{% block title %}Shop entry point{% endblock %}</title>
     </head>
+    
     <body>
-        <nav>
-            {% block nav %}
-                <ul>
-                    <li class="navbar"><a href="{{ path('app_home') }}">Accueil</a></li>
-                    <li class="navbar"><a href="{{ path('app_list') }}">Item list</a></li>
-                    <li class="navbar"><a href="{{ path('app_list_page') }}">Item list paginated</a></li>
-                    <li class="navbar"><a href="{{ path('app_article_index') }}">Article CRUD</a></li>
-                    <li class="navbar"><a href="{{ path('app_category_index') }}">Category CRUD</a></li>
-                    <li class="navbar"><a href="{{ path('app_about') }}">A propos</a></li>
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-                    {% else %}
-                        <li><a href="{{ path('app_login') }}">Connexion</a></li>
-                    {% endif %}
-                </ul>
-            {% endblock %}
-        </nav>
-        {% block body %}{% endblock %}
+        <header>
+            <div>
+                <img src="img/icon.png" alt="">
+                <h4>DingTongs</h4>
+            </div>
+            <nav>
+                {% block nav %}
+                    <ul>
+                        <li class="navbar"><a href="{{ path('app_home') }}">Accueil</a></li>
+                        <li class="navbar"><a href="{{ path('app_list') }}">Item list</a></li>
+                        <li class="navbar"><a href="{{ path('app_list_page') }}">Item list paginated</a></li>
+                        <li class="navbar"><a href="{{ path('app_article_index') }}">Article CRUD</a></li>
+                        <li class="navbar"><a href="{{ path('app_category_index') }}">Category CRUD</a></li>
+                        <li class="navbar"><a href="{{ path('app_about') }}">A propos</a></li>
+                        {% if app.user %}
+                            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                        {% else %}
+                            <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                        {% endif %}
+                    </ul>
+                {% endblock %}
+            </nav>
+        </header>
 
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer>
+            {%  block footer %}{% endblock %}
+        </footer>
         {% block js %}
             <script src="js/app.js"></script>
         {% endblock %}
-
-
     <body>
-    <footer>
-        {%  block footer %}Base footer{% endblock %}
-    </footer>
+    
 </html>
