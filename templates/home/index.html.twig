@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
-
+{% block css %}
+    <link rel="stylesheet" href="style/home.css">
+{% endblock %}
 {% block title %} {{ parent() }} | Home {% endblock %}
 
 {% block body %}
-
-    <h1>Home - Shop entry point</h1>
-
+    <div class="content">
+        <div class="home_bg">
+           {#  <img src="img/bg_home.jpg" alt=""> #}
+        </div>
+    </div>
 {% endblock %}

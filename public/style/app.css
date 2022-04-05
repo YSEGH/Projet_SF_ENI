@@ -18,17 +18,34 @@ body {
 }
 /* Header */
 header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 5rem;
+  width: 100vw;
   padding: 1rem;
 }
 header div {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+/* header div::after {
+  content: "";
+  position: absolute;
+  top: -5rem;
+  left: -10rem;
+  z-index: -1;
+  height: 10rem;
+  width: 20rem;
+  background-color: #fff;
+  transform: rotate(45deg);
+} */
 header div img {
   height: 3rem;
   width: 3rem;
@@ -36,7 +53,8 @@ header div img {
   margin-right: 1rem;
 }
 header div h4 {
-  font-weight: 400;
+  font-weight: 300;
+  color: black;
 }
 nav ul {
   display: flex;
@@ -48,6 +66,7 @@ nav ul li {
   list-style-type: none;
 }
 nav ul li a {
+  font-weight: 300;
   text-decoration: none;
   color: black;
 }

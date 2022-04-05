@@ -46,18 +46,19 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-    public function countItems(){
+    public function countItems()
+    {
         $qb = $this->createQueryBuilder('a')
             ->select('COUNT(a)');
         $query = $qb->getQuery();
         $nb = $query->getResult()[0][1];
-        settype($nb,'integer');
+        settype($nb, 'integer');
         return $nb;
     }
 
     /**
-    * @return Paginator Returns an array of Article objects
-    */
+     * @return Paginator Returns an array of Article objects
+     */
 
     public function findWithLimit($pageNumber = 0, $limit = 10)
     {
@@ -65,8 +66,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->addSelect('a.name')
             ->orderBy('a.name', 'ASC')
             ->setMaxResults($limit)
-            ->setFirstResult($pageNumber * $limit)
-        ;
+            ->setFirstResult($pageNumber * $limit);
         $query = $qb->getQuery();
         return new Paginator($query);
     }
