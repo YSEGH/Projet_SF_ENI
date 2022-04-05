@@ -18,7 +18,7 @@
                 <li>{{ i.category }}</li>
                 <li>{{ i.description }}</li>
                 <li>Price : {{ i.price }} €</li>
-                <li><a href="{{ path('app_cart_add',{'id': i.id}) }}"><input type="submit"/></a></li>
+                <li><a href="{{ path('app_cart_add',{'id': i.id}) }}"><input type="submit" value="Add do cart"/></a></li>
             </ul>
         </div>
     {% endfor %}
