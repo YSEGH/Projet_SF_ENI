@@ -1,0 +1,25 @@
+.form {
+  width: 20rem;
+}
+.form h1 {
+  text-align: center;
+}
+.form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem auto 0.5rem auto;
+}
+.form div label {
+  width: 100%;
+}
+.form div input {
+  width: 100%;
+  padding: 0.5rem;
+}
+.form div button {
+  width: 100%;
+  padding: 0.5rem;
+}
