@@ -28,9 +28,13 @@ class Article
     #[ORM\Column(type: 'string', length: 255)]
     private $slug;
 
-    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'name')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'items')]
     #[ORM\JoinColumn(nullable: false)]
-    private $categoryID;
+    private $category;
+
+    public function __toString():String {
+        return $this->name;
+    }
 
     public function getId(): ?int
     {
@@ -97,14 +101,14 @@ class Article
         return $this;
     }
 
-    public function getCategoryID(): ?Category
+    public function getCategory(): ?Category
     {
-        return $this->categoryID;
+        return $this->category;
     }
 
-    public function setCategoryID(?Category $categoryID): self
+    public function setCategory(?Category $category): self
     {
-        $this->categoryID = $categoryID;
+        $this->category = $category;
 
         return $this;
     }

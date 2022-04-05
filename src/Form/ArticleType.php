@@ -16,8 +16,7 @@ class ArticleType extends AbstractType
             ->add('description')
             ->add('price')
             ->add('image')
-            ->add('slug')
-            ->add('categoryID')
+            ->add('category')
         ;
     }
 

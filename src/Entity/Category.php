@@ -15,12 +15,19 @@ class Category
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\OneToMany(mappedBy: 'categoryID', targetEntity: Article::class)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $name;
+
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class, orphanRemoval: true)]
+    private $items;
 
     public function __construct()
     {
-        $this->name = new ArrayCollection();
+        $this->items = new ArrayCollection();
+    }
+
+    public function __toString():String {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -28,30 +35,42 @@ class Category
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Article>
-     */
-    public function getName(): Collection
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function addName(Article $name): self
+    public function setName(string $name): self
     {
-        if (!$this->name->contains($name)) {
-            $this->name[] = $name;
-            $name->setCategoryID($this);
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    public function addItem(Article $item): self
+    {
+        if (!$this->items->contains($item)) {
+            $this->items[] = $item;
+            $item->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeName(Article $name): self
+    public function removeItem(Article $item): self
     {
-        if ($this->name->removeElement($name)) {
+        if ($this->items->removeElement($item)) {
             // set the owning side to null (unless already changed)
-            if ($name->getCategoryID() === $this) {
-                $name->setCategoryID(null);
+            if ($item->getCategory() === $this) {
+                $item->setCategory(null);
             }
         }
 
