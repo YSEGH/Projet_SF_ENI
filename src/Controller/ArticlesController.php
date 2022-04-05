@@ -20,7 +20,7 @@ class ArticlesController extends AbstractController
     #[Route('/list/page/{page}', name: 'app_list_page', requirements:['page'=>'\d+'])]
     public function page(ArticleRepository $repo,$page = 0): Response
     {
-        $maxItemByPage = 10;
+        /*$maxItemByPage = 10;
         $offset = $page * $maxItemByPage;
         $nbItem= $repo->countItems();
         $lastPage = intdiv($nbItem,$maxItemByPage);
@@ -28,9 +28,11 @@ class ArticlesController extends AbstractController
         if($nbItem % $maxItemByPage === 0){
             $lastPage--;
         }
-        $items = $repo->findBy(['dateCreated'=>'DESC'], $maxItemByPage, $offset);
-
-        return $this->render('articles/pages.html.twig',compact('items','page','lastPage'));
+        $items = $repo->findBy(['id' => true], ['price'=>'DESC'], $maxItemByPage, $offset);
+        */
+        $maxItemByPage = 1;
+        $items = $repo->findWithLimit($page,$maxItemByPage);
+        return $this->render('articles/index.html.twig',compact('items','page'));
     }
 
     #Display the detail of an item reach with his ID

@@ -6,6 +6,7 @@ use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -54,6 +55,21 @@ class ArticleRepository extends ServiceEntityRepository
         return $nb;
     }
 
+    /**
+    * @return Paginator Returns an array of Article objects
+    */
+
+    public function findWithLimit($pageNumber = 0, $limit = 10)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->addSelect('a.name')
+            ->orderBy('a.name', 'ASC')
+            ->setMaxResults($limit)
+            ->setFirstResult($pageNumber * $limit)
+        ;
+        $query = $qb->getQuery();
+        return new Paginator($query);
+    }
 
 
     // /**

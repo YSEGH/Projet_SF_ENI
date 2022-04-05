@@ -11,7 +11,23 @@
         {%  block header %}Base Header{% endblock %}
     </header>
     <nav>
-        {% block nav %}Base Nav{% endblock %}
+        {% block nav %}
+            <ul>
+                <li class="navbar"><a href="{{ path('app_home') }}">Home</a></li>
+                <li class="navbar"><a href="{{ path('app_list') }}">Item list</a></li>
+                <li class="navbar"><a href="{{ path('app_list_page') }}">Item list paginated</a></li>
+                <li class="navbar"><a href="{{ path('app_article_index') }}">Article CRUD</a></li>
+                <li class="navbar"><a href="{{ path('app_category_index') }}">Category CRUD</a></li>
+                <li class="navbar"><a href="{{ path('app_about') }}"> About us</a></li>
+                {# {% if app.user is null %} #}
+                    <li class="navbar"><a href="{{ path('app_home') }}"> Login</a></li>
+                    <li class="navbar"><a href="{{ path('app_home') }}"> Sign in</a></li>
+                {# {% endif %} #}
+                {# {% if app.user is not null %} #}
+                    <li class="navbar"><a href="{{ path('app_home') }}"> Logout</a></li>
+                {# {% endif %} #}
+            </ul>
+        {% endblock %}
     </nav>
         {% block body %}Base body{% endblock %}
     </body>
