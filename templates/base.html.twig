@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         {# CSS #}
@@ -21,7 +21,7 @@
                     <li class="navbar"><a href="{{ path('app_about') }}"> About us</a></li>
                     {# {% if app.user is null %} #}
                         <li class="navbar"><a href="{{ path('app_home') }}"> Login</a></li>
-                        <li class="navbar"><a href="{{ path('app_home') }}"> Sign in</a></li>
+                        <li class="navbar"><a href="{{ path('app_register') }}"> Sign in</a></li>
                     {# {% endif %} #}
                     {# {% if app.user is not null %} #}
                         <li class="navbar"><a href="{{ path('app_home') }}"> Logout</a></li>
@@ -36,7 +36,7 @@
         {% endblock %}
 
 
-    <body>
+    </body>
     <footer>
         {%  block footer %}Base footer{% endblock %}
     </footer>
