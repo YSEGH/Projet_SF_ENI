@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | paginated items {% endblock %}
+
+{% block body %}
+
+    <h1> {{ article.name }}</h1>
+    <div>{{ article.description }}</div>
+
+{% endblock %}

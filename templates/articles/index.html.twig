@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Items {% endblock %}
+
+{% block body %}
+
+    <h1> List of all items </h1>
+    {% if page is defined %}
+        <h1> Item paginated | page n°{{ page }}</h1>
+    {% else %}
+        <h1> List of all items </h1>
+    {% endif %}
+
+    <ol>
+        {%  for i in items %}
+            <li>{{ i.name }}</li>
+            {# <li><a href="{{ path('app_detail_id',{'id': i.id}) }}">{{ i.category.name }} - {{ i.name }}</a></li> #}
+        {% endfor %}
+    </ol>
+    {% if page is defined %}
+        {% if(page > 0) %}
+            <a href="{{ path('app_list_page', {'page': page-1}) }}">Previous</a>
+        {% endif %}
+        {# {% if page!=lastPage %} #}
+            <a href="{{ path('app_list_page', {'page': page+1}) }}">Next</a>
+        {# {% endif %} #}
+    {% endif %}
+{% endblock %}
