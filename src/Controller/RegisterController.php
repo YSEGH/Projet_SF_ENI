@@ -20,14 +20,6 @@ class RegisterController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'app_test')]
-    public function test(): Response
-    {
-        return $this->render('base.html.twig', [
-            'controller_name' => 'Home',
-        ]);
-    }
-
     #[Route('/inscription', name: 'app_register')]
     public function index(Request $request, UserPasswordHasherInterface $userPasswordHasher): Response
     {
