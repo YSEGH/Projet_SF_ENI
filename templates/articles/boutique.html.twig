@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" href="style/boutique.css">
+    <link rel="stylesheet" href="style/item.css">
+{% endblock %}
+{% block title %} {{ parent() }} | Items {% endblock %}
+
+{% block body %}
+
+    {% if page is defined %}
+        <h1> Item paginated | page n°{{ page }}</h1>
+    {% else %}
+        <h1> List of all items </h1>
+    {% endif %}
+
+    <div class="items_container">
+        {%  for i in items %}
+            {% include "article/item.html.twig" with {'i' : i} %}
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page is defined %}
+            {% if(page > 0) %}
+                <a href="{{ path('app_list_page', {'page': page-1}) }}">Previous</a>
+            {% endif %}
+        {# {% if page!=lastPage %} #}
+            <a href="{{ path('app_list_page', {'page': page+1}) }}">Next</a>
+        {# {% endif %} #}
+    {% endif %}
+    </div>
+{% endblock %}

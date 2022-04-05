@@ -10,23 +10,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-    #[Route('/list', name: 'app_list')]
+    #[Route('/boutique', name: 'app_list')]
     public function list(ArticleRepository $repo): Response
     {
         $items = $repo->findAll();
-        return $this->render('articles/index.html.twig', compact('items'));
+        return $this->render('articles/boutique.html.twig', compact('items'));
     }
     #Items are diplayed with pagination
-    #[Route('/list/page/{page}', name: 'app_list_page', requirements: ['page' => '\d+'])]
+    #[Route('/boutique/page/{page}', name: 'app_list_page', requirements: ['page' => '\d+'])]
     public function page(ArticleRepository $repo, $page = 0): Response
     {
         $maxItemByPage = 1;
         $items = $repo->findWithLimit($page, $maxItemByPage);
-        return $this->render('articles/index.html.twig', compact('items', 'page'));
+        return $this->render('articles/boutique.html.twig', compact('items', 'page'));
     }
 
     #Display the detail of an item reach with his ID
-    #[Route('/list/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
+    #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo): Response
     {
         $items = $repo->find($id);
