@@ -19,7 +19,7 @@ class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
 
-    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['id' => '\d+'])]
+    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
     public function list(Request $request, ArticleRepository $repo, CategoryRepository $cate_repo, $page = 0, $categorie = null, $min = null, $max = null): Response
 
     {
