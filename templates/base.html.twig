@@ -21,12 +21,14 @@
           <li class="navbar"><a href="{{ path('app_home') }}">Accueil</a></li>
           <li class="navbar"><a href="{{ path('app_list') }}">Boutique</a></li>
           <li class="navbar"><a href="{{ path('app_cart') }}">Cart</a></li>
+          {%  if is_granted('ROLE_ADMIN') %}
           <li class="navbar">
             <a href="{{ path('app_article_index') }}">Article CRUD</a>
           </li>
           <li class="navbar">
             <a href="{{ path('app_category_index') }}">Category CRUD</a>
           </li>
+          {% endif %}
           <li class="navbar"><a href="{{ path('app_about') }}">A propos</a></li>
           {% if app.user %}
           <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
