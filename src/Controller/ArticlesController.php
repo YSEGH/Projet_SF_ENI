@@ -7,7 +7,6 @@ use App\Manager\CartManager;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Form\RangeFormType;
-use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,10 +80,11 @@ class ArticlesController extends AbstractController
 
             $cartManager->save($cart);
 
-            return $this->redirectToRoute('app_detail_id', ['id' => $items->getId()]);
+            //return $this->redirectToRoute('app_detail_id', ['id' => $items->getId()]);
+            return $this->redirectToRoute('app_cart');
         }
 
-        return $this->render('articles/tocart.html.twig', [
+        return $this->render('articles/detail.html.twig', [
             'items' => $items,
             'form' => $form->createView()
         ]);
