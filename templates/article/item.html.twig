@@ -3,6 +3,9 @@
   {#  <div class="add_to_cart">
     <a href="{{ path('app_cart_add', { id: i.id }) }}">Ajouter au panier</a>
   </div>#}
+  <div class="add_to_cart">
+    <a href="{{ path('app_detail_id', { id: i.id }) }}">Detail</a>
+  </div>
   <ul>
     <li class="name">
       <a href="{{ path('app_detail_id', { id: i.id }) }}">{{ i.name }}</a>

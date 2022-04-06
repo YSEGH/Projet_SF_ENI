@@ -48,6 +48,7 @@ class ArticlesController extends AbstractController
         ]);
     }
 
+    /* #Old route for article detail
     #Display the detail of an item reach with his ID
     #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo): Response
@@ -57,10 +58,11 @@ class ArticlesController extends AbstractController
             throw $this->createNotFoundException();
         return $this->render('articles/detail.html.twig', compact('items'));
     }
+    */
 
     #Test new cart that persists in DB
-    #[Route('/boutique/cart/{id}', name: 'app_cart_id', requirements: ['id' => '\d+'])]
-    public function tocart($id, ArticleRepository $repo, Request $request, CartManager $cartManager): Response
+    #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
+    public function detail($id, ArticleRepository $repo, Request $request, CartManager $cartManager): Response
     {
         $form = $this->createForm(AddToCartType::class);
         $items = $repo->find($id);
@@ -79,7 +81,7 @@ class ArticlesController extends AbstractController
 
             $cartManager->save($cart);
 
-            return $this->redirectToRoute('app_cart_id', ['id' => $items->getId()]);
+            return $this->redirectToRoute('app_detail_id', ['id' => $items->getId()]);
         }
 
         return $this->render('articles/tocart.html.twig', [
