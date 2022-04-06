@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Manager;
 
 use App\Entity\Order;
 use App\Factory\OrderFactory;

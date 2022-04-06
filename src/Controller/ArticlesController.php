@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use App\Form\AddToCartType;
+use App\Manager\CartManager;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Form\RangeFormType;
 use App\Entity\Article;
-use App\Form\AddToCartType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
