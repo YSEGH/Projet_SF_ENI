@@ -8,7 +8,7 @@
       <a href="{{ path('app_detail_id', { id: i.id }) }}">{{ i.name }}</a>
     </li>
     <li class="category">
-      <a href="">{{ i.category }}</a>
+      <a href="{{path('app_list_filter', { page: 0, filter: i.category })}}">{{ i.category }}</a>
     </li>
     <li class="description">{{ i.description }}</li>
     <li class="price">{{ i.price }}€</li>

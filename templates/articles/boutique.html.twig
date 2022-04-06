@@ -16,9 +16,14 @@ body %} {# {% if page is defined %}
         {% for i in items %}
         <li class="category">
           <a
-            href="{{
-              path('app_list_filter', { page: 0, filter: i.category.name })
-            }}"
+          {% if filter is defined %}
+            {% if (filter == i.category.name) %}
+                    style="background-color: rgb(184, 150, 38);"
+                    href="{{path('app_list')}}"
+            {% endif %}
+          {% else %}
+              href="{{path('app_list_filter', { page: 0, filter: i.category.name })}}"
+          {% endif %}
             >{{ i.category.name }}</a
           >
         </li>
