@@ -16,6 +16,7 @@ class ArticlesController extends AbstractController
         $items = $repo->findAll();
         return $this->render('articles/boutique.html.twig', compact('items'));
     }
+
     #Items are diplayed with pagination
     #[Route('/boutique/page/{page}', name: 'app_list_page', requirements: ['page' => '\d+'])]
     public function page(ArticleRepository $repo, $page = 0): Response
@@ -23,6 +24,15 @@ class ArticlesController extends AbstractController
         $maxItemByPage = 1;
         $items = $repo->findWithLimit($page, $maxItemByPage);
         return $this->render('articles/boutique.html.twig', compact('items', 'page'));
+    }
+
+    #Items are diplayed with pagination
+    #[Route('/boutique/page/{page}/{filter}', name: 'app_list_filter', requirements: ['page' => '\d+', 'filter' => '[a-zA-Z]+'])]
+    public function filter(ArticleRepository $repo, $page = 0, $filter = null): Response
+    {
+        $maxItemByPage = 10;
+        $items = $repo->findWithFilter($page, $maxItemByPage, $filter);
+        return $this->render('articles/boutique.html.twig', compact('items', 'page', 'filter'));
     }
 
     #Display the detail of an item reach with his ID

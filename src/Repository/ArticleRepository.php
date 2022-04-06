@@ -6,6 +6,8 @@ use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query\AST\Join;
+use Doctrine\ORM\Query\Expr\Join as ExprJoin;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -71,6 +73,30 @@ class ArticleRepository extends ServiceEntityRepository
         return new Paginator($query);
     }
 
+    /**
+     * @return Paginator Returns an array of Article objects
+     */
+
+    public function findWithFilter($pageNumber = 0, $limit = 10, $filter = null)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->join('a.category', 'c')
+            ->addSelect('c')
+            ->where('c.name = :val')
+            ->setParameter('val', $filter);
+
+        $query = $qb->getQuery();
+        return new Paginator($query);
+    }
+
+    public function getFilters()
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('a, a.category');
+        $query = $qb->getQuery();
+        $data = $query->getResult();
+        return $data;
+    }
 
     // /**
     //  * @return Article[] Returns an array of Article objects
