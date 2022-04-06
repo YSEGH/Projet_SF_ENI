@@ -4,6 +4,11 @@ namespace App\Controller;
 
 use App\Form\AddToCartType;
 use App\Manager\CartManager;
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
+use App\Form\RangeFormType;
+use App\Entity\Article;
+use App\Form\AddToCartType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,29 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-    #[Route('/boutique', name: 'app_list')]
-    public function list(ArticleRepository $repo): Response
+    #[Route('/boutique/{page}/{categorie}', name: 'app_list')]
+    public function list(Request $request, ArticleRepository $repo, $page = 0, $categorie = null, $min = null, $max = null): Response
     {
-        $items = $repo->findAll();
-        return $this->render('articles/boutique.html.twig', compact('items'));
-    }
+        $search = new PropertySearch();
+        $search->setPage($page);
+        $search->setCategorie($categorie);
+        $search->setMin($min);
+        $search->setMax($max);
 
-    #Items are diplayed with pagination
-    #[Route('/boutique/page/{page}', name: 'app_list_page', requirements: ['page' => '\d+'])]
-    public function page(ArticleRepository $repo, $page = 0): Response
-    {
-        $maxItemByPage = 1;
-        $items = $repo->findWithLimit($page, $maxItemByPage);
-        return $this->render('articles/boutique.html.twig', compact('items', 'page'));
-    }
+        $form_range = $this->createForm(PropertySearchType::class, $search);
+        $form_range->handleRequest($request);
 
-    #Items are diplayed with pagination
-    #[Route('/boutique/page/{page}/{filter}', name: 'app_list_filter', requirements: ['page' => '\d+', 'filter' => '[a-zA-Z]+'])]
-    public function filter(ArticleRepository $repo, $page = 0, $filter = null): Response
-    {
-        $maxItemByPage = 10;
-        $items = $repo->findWithFilter($page, $maxItemByPage, $filter);
-        return $this->render('articles/boutique.html.twig', compact('items', 'page', 'filter'));
+        $items = $repo->getItems($search);
+
+        return $this->render('articles/boutique.html.twig', [
+            'form_range' => $form_range->createView(),
+            'items' => $items,
+            'categorie' => $categorie,
+            'min' => $search->getMin(),
+            'max' => $search->getMax()
+        ]);
     }
 
     #Display the detail of an item reach with his ID

@@ -1,57 +1,62 @@
 {% extends 'base.html.twig' %} {% block css %}
 <link rel="stylesheet" href="{{ asset('style/boutique.css') }}" />
 <link rel="stylesheet" href="{{ asset('style/item.css') }}" />
-{% endblock %} {% block title %} {{ parent() }} | Items {% endblock %} {% block
-body %} {# {% if page is defined %}
+{% endblock %} 
+
+{% block title %} {{ parent() }} | Items {% endblock %} 
+{% block body %} 
+
+{# {% if page is defined %}
 <h1>Item paginated | page n°{{ page }}</h1>
 {% else %}
 <h1>List of all items</h1>
-{% endif %} #}
+{% endif %} ?min=0&max=14  #}
 
 <div class="content">
   <div class="filters_container">
     <h1>Filtres</h1>
     <div class="filters">
-      <ul>
-        {% for i in items %}
-        <li class="category">
-          <a
-          {% if filter is defined %}
-            {% if (filter == i.category.name) %}
-                    style="background-color: rgb(184, 150, 38);"
-                    href="{{path('app_list')}}"
-            {% endif %}
-          {% else %}
-              href="{{path('app_list_filter', { page: 0, filter: i.category.name })}}"
-          {% endif %}
-            >{{ i.category.name }}</a
-          >
-        </li>
-        {% endfor %}
+      <ul> 
+        {% if categorie is not null %}
+            <li class="category">
+                <a 
+                style="background-color: rgb(184, 150, 38);"
+                href="{{path('app_list', {categorie: null, min : min, max: max })}}">
+                    {{categorie}}
+                </a>
+            </li>
+        {% else %}
+            {% for i in items %}
+                <li class="category">
+                    <a href="{{path('app_list', {categorie: i.category.name, min : min, max: max })}}">
+                        {{ i.category.name }}
+                    </a
+                    >
+                </li>
+            {% endfor %}
+        {% endif %}
       </ul>
     </div>
     <h1>Prix</h1>
     <div class="range">
-      <form action="POST">
-        <input type="number" name="min" placeholder="min" />
-        <input type="number" name="max" placeholder="max" />
-        <button type="submit" class="submit">
-          <img src="{{ asset('img/search.png') }}" alt="" />
-        </button>
-      </form>
+        {{ form_start(form_range)}}
+        {{form_row(form_range.min)}}
+        {{form_row(form_range.max)}}
+        <button type="submit" class="submit"><img src="{{ asset('img/search.png') }}" alt="" /></button>
+        {{ form_end(form_range)}}
     </div>
   </div>
   <div class="items_container">
-    {% for i in items %} {% include "article/item.html.twig" with {'i' : i} %}
+    {% for i in items %} {% include "article/item.html.twig" with {'i' : i,'min' : min, 'max': max } %}
     {% endfor %}
   </div>
 </div>
 
-<div class="pagination">
+{# <div class="pagination">
   {% if page is defined %} {% if(page > 0) %}
   <a href="{{ path('app_list_page', { page: page - 1 }) }}">Previous</a>
-  {% endif %} {# {% if page!=lastPage %} #}
+  {% endif %} {# {% if page!=lastPage %} 
   <a href="{{ path('app_list_page', { page: page + 1 }) }}">Next</a>
-  {# {% endif %} #} {% endif %}
-</div>
+  {# {% endif %} {% endif %}
+</div> #}
 {% endblock %}
