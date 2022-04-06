@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\PropertySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -58,44 +59,29 @@ class ArticleRepository extends ServiceEntityRepository
         return $nb;
     }
 
-    /**
-     * @return Paginator Returns an array of Article objects
-     */
-
-    public function findWithLimit($pageNumber = 0, $limit = 10)
+    public function getItems(PropertySearch $search, $limit = 10)
     {
-        $qb = $this->createQueryBuilder('a')
-            ->addSelect('a.name')
-            ->orderBy('a.name', 'ASC')
-            ->setMaxResults($limit)
-            ->setFirstResult($pageNumber * $limit);
+        $qb = $this->createQueryBuilder('a');
+        if ($search->getCategorie()) {
+            $qb->join('a.category', 'c')
+                ->addSelect('c')
+                ->andWhere('c.name = :val')
+                ->setParameter('val', $search->getCategorie());
+        }
+        if ($search->getMin()) {
+            $qb->andWhere('a.price >= :min')
+                ->setParameter('min', $search->getMin());
+        }
+
+        if ($search->getMax()) {
+            $qb->andWhere('a.price <= :max')
+                ->setParameter('max', $search->getMax());
+        }
+
+        $qb->setMaxResults($limit)
+            ->setFirstResult($search->getPage() * $limit);
         $query = $qb->getQuery();
         return new Paginator($query);
-    }
-
-    /**
-     * @return Paginator Returns an array of Article objects
-     */
-
-    public function findWithFilter($pageNumber = 0, $limit = 10, $filter = null)
-    {
-        $qb = $this->createQueryBuilder('a')
-            ->join('a.category', 'c')
-            ->addSelect('c')
-            ->where('c.name = :val')
-            ->setParameter('val', $filter);
-
-        $query = $qb->getQuery();
-        return new Paginator($query);
-    }
-
-    public function getFilters()
-    {
-        $qb = $this->createQueryBuilder('a')
-            ->select('a, a.category');
-        $query = $qb->getQuery();
-        $data = $query->getResult();
-        return $data;
     }
 
     // /**

@@ -24,6 +24,7 @@
   text-transform: capitalize;
   margin: 0.5rem 0 1rem 0;
   transition: 0.25s;
+  cursor: pointer;
 }
 .content ul li.category a:hover {
   background-color: rgb(184, 150, 38);
@@ -50,6 +51,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+.filters_container .range form #range_form {
+  display: flex;
 }
 .filters_container .range input {
   width: 4rem;
@@ -83,7 +87,7 @@
 .items_container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   padding: 0 0 0 2rem;
