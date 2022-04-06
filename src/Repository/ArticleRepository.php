@@ -59,11 +59,11 @@ class ArticleRepository extends ServiceEntityRepository
 
     public function getItems(PropertySearch $search, $limit = 10)
     {
-        $qb = $this->createQueryBuilder('a');
+        $qb = $this->createQueryBuilder('a')
+            ->join('a.category', 'c')
+            ->addSelect('c');
         if ($search->getCategorie()) {
-            $qb->join('a.category', 'c')
-                ->addSelect('c')
-                ->andWhere('c.name = :val')
+            $qb->andWhere('c.name = :val')
                 ->setParameter('val', $search->getCategorie());
         }
         if ($search->getMin()) {
@@ -79,7 +79,11 @@ class ArticleRepository extends ServiceEntityRepository
         $qb->setMaxResults($limit)
             ->setFirstResult($search->getPage() * $limit);
         $query = $qb->getQuery();
-        return new Paginator($query);
+        $data = $query->getResult();
+        return [
+            'paginator' => new Paginator($query),
+            'data' => $data
+        ];
     }
 
     // /**

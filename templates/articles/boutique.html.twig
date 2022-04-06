@@ -26,10 +26,10 @@
                 </a>
             </li>
         {% else %}
-            {% for i in items %}
+            {% for c in categories %}
                 <li class="category">
-                    <a href="{{path('app_list', {categorie: i.category.name, min : min, max: max })}}">
-                        {{ i.category.name }}
+                    <a href="{{path('app_list', {categorie: c.name, min : min, max: max })}}">
+                        {{ c.name }}
                     </a
                     >
                 </li>

@@ -9,6 +9,7 @@ use App\Form\PropertySearchType;
 use App\Form\RangeFormType;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,8 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
-    public function list(Request $request, ArticleRepository $repo, $page = 0, $categorie = null, $min = null, $max = null): Response
+
+    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['id' => '\d+'])]
+    public function list(Request $request, ArticleRepository $repo, CategoryRepository $cate_repo, $page = 0, $categorie = null, $min = null, $max = null): Response
+
     {
         $search = new PropertySearch();
         $search->setPage($page);
@@ -30,11 +33,16 @@ class ArticlesController extends AbstractController
         $form_range->handleRequest($request);
 
         $items = $repo->getItems($search);
-
+        $categories = [];
+        foreach ($items['data'] as $item) {
+            array_push($categories, $item->getCategory());
+        }
+        $categories = array_unique($categories);
         return $this->render('articles/boutique.html.twig', [
             'form_range' => $form_range->createView(),
-            'items' => $items,
+            'items' => $items['paginator'],
             'categorie' => $categorie,
+            'categories' => $categories,
             'min' => $search->getMin(),
             'max' => $search->getMax()
         ]);
