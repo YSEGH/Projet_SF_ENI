@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
 use App\Form\AddToCartType;
+use App\Manager\CartManager;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
