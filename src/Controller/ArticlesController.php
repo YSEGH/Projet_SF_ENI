@@ -8,7 +8,6 @@ use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
 use App\Form\RangeFormType;
 use App\Entity\Article;
-use App\Form\AddToCartType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-    #[Route('/boutique/{page}/{categorie}', name: 'app_list')]
+    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
     public function list(Request $request, ArticleRepository $repo, $page = 0, $categorie = null, $min = null, $max = null): Response
     {
         $search = new PropertySearch();
