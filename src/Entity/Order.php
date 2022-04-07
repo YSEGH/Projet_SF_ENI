@@ -31,6 +31,9 @@ class Order
     #[ORM\Column(type: 'datetime')]
     private $updatedAt;
 
+    #[ORM\OneToOne(mappedBy: 'cartID', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private $user;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
@@ -133,5 +136,27 @@ class Order
         }
 
         return $total;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setCartID(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getCartID() !== $this) {
+            $user->setCartID($this);
+        }
+
+        $this->user = $user;
+
+        return $this;
     }
 }

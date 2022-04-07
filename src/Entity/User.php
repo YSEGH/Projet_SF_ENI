@@ -31,6 +31,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $firstname;
 
+    #[ORM\OneToOne(inversedBy: 'user', targetEntity: Order::class, cascade: ['persist', 'remove'])]
+    private $cartID;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +143,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getCartID(): ?Order
+    {
+        return $this->cartID;
+    }
+
+    public function setCartID(?Order $cartID): self
+    {
+        $this->cartID = $cartID;
 
         return $this;
     }
