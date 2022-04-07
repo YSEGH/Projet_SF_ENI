@@ -1,0 +1,85 @@
+.container {
+  margin-top: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table.greyGridTable {
+  border: 2px solid #ffffff;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.greyGridTable td,
+table.greyGridTable th {
+  border: 1px solid #ffffff;
+  padding: 3px 4px;
+}
+table.greyGridTable tbody td {
+  font-size: 13px;
+}
+table.greyGridTable td:nth-child(even) {
+  background-color: rgba(247, 75, 75, 0.308);
+}
+table.greyGridTable thead {
+  background-color: rgb(247, 75, 75);
+  border-bottom: 1px solid #333333;
+}
+table.greyGridTable thead th {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  border-left: 1px solid #333333;
+}
+table.greyGridTable thead th:first-child {
+  border-left: none;
+}
+
+table.greyGridTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  border-top: 4px solid #333333;
+}
+table.greyGridTable tfoot td {
+  font-size: 14px;
+}
+table.greyGridTable tbody td.buttons-container {
+  display: flex;
+}
+.container a {
+  display: block;
+  margin: auto;
+  color: #fff;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  width: 6rem;
+}
+table.greyGridTable a.show {
+  margin-right: 0.5rem;
+  background-color: rgb(111, 111, 221);
+}
+table.greyGridTable a.edit {
+  background-color: rgb(61, 61, 63);
+}
+.container a.create {
+  margin-top: 0.5rem;
+  background-color: rgb(99, 201, 99);
+}
+.container a.back {
+  width: fit-content;
+  margin-top: 2.5rem;
+  color: rgb(28, 25, 236);
+}
+table.greyGridTable button.delete {
+  width: 6rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #fff;
+  background-color: rgb(235, 91, 47);
+}

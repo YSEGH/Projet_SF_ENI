@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Category index{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{asset('style/dashboard.css')}}">
+<link rel="stylesheet" href="{{asset('style/table.css')}}">
+{% endblock %}
+{% block title %}Gestion Catégories{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+<div class="content">
+    {% include "dashboard/nav.html.twig" %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <table class="table greyGridTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td class="buttons-container">
+                        <a class="show" href="{{ path('app_category_show', {'id': category.id}) }}">Détails</a>
+                        <a class="edit"  href="{{ path('app_category_edit', {'id': category.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a class="create" href="{{ path('app_category_new') }}">Ajouter</a>
+    </div>
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
+</div>
+    
 {% endblock %}

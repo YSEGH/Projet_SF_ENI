@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
-
+{% block css %}
+<link rel="stylesheet" href="{{asset('style/dashboard.css')}}">
+{% endblock %}
 
 
 {% block body %}
-{% include "dashboard/nav.html.twig" %}
+<div class="content">
+    {% include "dashboard/nav.html.twig" %}
 
-<h1>{{controller_name}}</h1>
+    <h1>{{controller_name}}</h1>
+</div>
 {% endblock %}

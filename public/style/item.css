@@ -25,14 +25,16 @@
   cursor: pointer;
 }
 .item .item_header .item_link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 10rem;
   width: 18rem;
 }
 .item .item_header img {
-  height: 10rem;
-  width: 18rem;
-  object-fit: cover;
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
 .item .item_header .add_to_cart {
   position: absolute;

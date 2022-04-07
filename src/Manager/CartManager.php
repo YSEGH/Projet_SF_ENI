@@ -11,7 +11,6 @@ use App\Entity\User;
 
 class CartManager
 {
-
     private CartSessionStorage $cartSessionStorage;
     private OrderFactory $cartFactory;
     private EntityManagerInterface $entityManager;
@@ -37,12 +36,13 @@ class CartManager
         //BDD storage by user
         /** @var User $user */
         $user = $this->security->getUser();
-        if(!empty($user)){
+
+        if (!empty($user)) {
             $cartId = $user->getCartID();
         }
         $cart = $this->cartSessionStorage->getCartUser($cartId);
 
-        if(empty($cart)){
+        if (empty($cart)) {
             //Session storage
             $cart = $this->cartSessionStorage->getCart();
         }
@@ -72,4 +72,3 @@ class CartManager
         $this->entityManager->flush();
     }
 }
-
