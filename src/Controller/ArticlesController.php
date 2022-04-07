@@ -68,6 +68,7 @@ class ArticlesController extends AbstractController
         $form->handleRequest($request);
         //Gestion du retour du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
+
             $item = $form->getData();
             $item->setProduct($item);
 
@@ -79,7 +80,7 @@ class ArticlesController extends AbstractController
             $cartManager->save($cart);
 
             //return $this->redirectToRoute('app_detail_id', ['id' => $item->getId()]);
-            return $this->redirectToRoute('app_cart');
+            /* return $this->redirectToRoute('app_cart'); */
         }
 
         return $this->render('articles/detail.html.twig', [

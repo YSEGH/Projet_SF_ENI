@@ -5,14 +5,18 @@
 {% block title %} {{ parent() }} | Home {% endblock %}
 
 {% block body %}
-    <div class="content">
-        <div>
-            <p>Faut-il garder cette page ou aller directement en boutique?</p>
-        </div>
-        {#
+    <div class="content home">
         <div class="home_bg">
            <img src="img/bg_home.jpg" alt="">
         </div>
-        #}
+        <div class="text-container">
+            <h1>DingTongs</h1>
+            <p class="slogan">Parce qu'on a tous une paire qui nous correspond.</p>
+            <p class="description">Découvrez tous nos modèles de tongs en vous rendant sur notre page boutique.</p>
+            <div class="buttons-container">
+                <a href="{{path('app_list')}}">Boutique</a>
+                <a href="{{path('app_about')}}">A propos</a>
+            </div>
+        </div>
     </div>
 {% endblock %}

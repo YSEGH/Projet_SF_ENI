@@ -6,7 +6,34 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
+.alert {
+  position: absolute;
+  right: 1rem;
+  top: 5rem;
+  padding: 1rem;
+  color: #fff;
+  animation: popup 5s ease forwards;
+}
+.alert.danger {
+  background-color: rgb(247, 75, 75);
+}
+@keyframes popup {
+  0% {
+    transform: translateX(110%);
+  }
+  10% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -39,7 +66,7 @@ header div {
   align-items: center;
   justify-content: space-between;
 }
-/* header div::after {
+header div::after {
   content: "";
   position: absolute;
   top: -5rem;
@@ -48,13 +75,18 @@ header div {
   height: 10rem;
   width: 20rem;
   background-color: #fff;
-  transform: rotate(45deg);
-} */
-header div img {
+  transform: rotate(-45deg);
+}
+header div a {
+  display: block;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+header div a img {
   height: 3rem;
   width: 3rem;
   object-fit: contain;
-  margin-right: 1rem;
 }
 header div h4 {
   font-weight: 300;
@@ -77,6 +109,9 @@ nav ul li a {
   align-items: center;
   justify-content: center;
 }
+nav.home ul li a {
+  color: #fff;
+}
 nav ul li a img {
   height: 1.5rem;
   width: auto;
@@ -98,7 +133,6 @@ main {
   align-items: center;
   justify-content: flex-start;
   width: 100vw;
-  padding: 10rem 0;
 }
 
 /* Footer */
