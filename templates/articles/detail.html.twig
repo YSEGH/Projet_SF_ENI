@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="col-md-8">
-
-    <h1 class="mt-4 mt-md-0">{{ article.name }}</h1>
-    <h2>{{ article.price }} €</h2>
-    <hr>
-    <b>Description: </b>{{ article.description }}
-    {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
-    <div class="form-group">
+<div class="item">
+    <div class="item_header">
+        <img src="{{ article.image }}" alt="{{ article.slug }} image" />
+    </div>
+    <ul>
+        <li class="name">{{ article.name }}</li>
+        <li class="category">
+            {{ article.category }}</a>
+        </li>
+        <li class="description">{{ article.description }}</li>
+        <li class="price">{{ article.price }}€</li>
+    </ul>
+    {{ form_start(form) }}
+    <div>
         {{ form_label(form.quantity) }}
-        {{ form_widget(form.quantity, {
-            'attr': {
-                'class': 'form-control ' ~ (form.quantity.vars.valid ? '' : 'is-invalid')
-            }
-        }) }}
-        <div class="invalid-feedback">
+        {{ form_widget(form.quantity) }}
+        <div>
             {{ form_errors(form.quantity) }}
         </div>
     </div>
-    {{ form_widget(form.add, {'attr': {'class': 'btn btn-warning w-25'}}) }}
+    {{ form_widget(form.add) }}
     {{ form_end(form) }}
 </div>
 {% endblock %}
