@@ -1,0 +1,26 @@
+<nav>
+    <ul>
+            <li><a href="{{ path('app_account_infos') }}">Infos personnelles</a></li>
+        {% if (is_granted('ROLE_ADMIN')) %}
+            <li class="navbar">
+                <a href="{{ path('app_article_index') }}">Articles</a>
+            </li>
+            <li class="navbar">
+                <a href="{{ path('app_category_index') }}">Categories</a>
+            </li>
+            <li class="navbar">
+                <a href="{{ path('app_account_address') }}">Mes adresses</a>
+            </li>
+            <li class="navbar">
+                <a href="{{ path('app_account_orders') }}">Mes commandes</a>
+            </li>
+        {% else %}
+            <li class="navbar">
+                <a href="{{ path('app_account_address') }}">Mes adresses</a>
+            </li>
+            <li class="navbar">
+                <a href="{{ path('app_account_orders') }}">Mes commandes</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-    #[Route('/boutique/{page}/{categorie}', name: 'app_list')]
+    #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
     public function list(Request $request, ArticleRepository $repo, CategoryRepository $cate_repo, $page = 0, $categorie = null, $min = null, $max = null): Response
     {
         $search = new PropertySearch();
@@ -50,10 +50,10 @@ class ArticlesController extends AbstractController
     #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo): Response
     {
-        $items = $repo->find($id);
-        if (!$items)
+        $item = $repo->find($id);
+        if (!$item)
             throw $this->createNotFoundException();
-        return $this->render('articles/detail.html.twig', compact('items'));
+        return $this->render('articles/detail.html.twig', compact('item'));
     }
 
     #Test new cart that persists in DB

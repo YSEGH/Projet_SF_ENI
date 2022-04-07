@@ -23,11 +23,9 @@
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="_password">
             </div>
-
-            <input type="hidden" name="_target_path" value="/">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
             <div>
-                <button type="submit">Valider</button>
+                <button type="submit">Me connecter</button>
             </div>
             <p>Pas encore de compte ? <a href="{{path('app_register')}}">M'inscrire.</a></p>
         </form>

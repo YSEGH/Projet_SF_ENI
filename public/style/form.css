@@ -24,12 +24,16 @@
 }
 .form div button {
   width: 100%;
-  padding: 0.5rem;
-  background-color: #ff9933;
+  padding: 1rem 0.5rem;
+  background-color: rgb(247, 75, 75);
   border: none;
   cursor: pointer;
   color: #fff;
   font-weight: 300;
+  font-size: 1rem;
+}
+.form div button:hover {
+  background-color: rgb(214, 50, 50);
 }
 .form p {
   text-align: center;
