@@ -6,6 +6,8 @@ use App\Entity\Order;
 use App\Factory\OrderFactory;
 use App\Storage\CartSessionStorage;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Security;
+use App\Entity\User;
 
 class CartManager
 {
@@ -13,20 +15,39 @@ class CartManager
     private CartSessionStorage $cartSessionStorage;
     private OrderFactory $cartFactory;
     private EntityManagerInterface $entityManager;
+    private Security $security;
 
     public function __construct(
         CartSessionStorage $cartStorage,
         OrderFactory $orderFactory,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        Security $security
     ) {
         $this->cartSessionStorage = $cartStorage;
         $this->cartFactory = $orderFactory;
         $this->entityManager = $entityManager;
+        $this->security = $security;
     }
 
     public function getCurrentCart(): Order
     {
-        $cart = $this->cartSessionStorage->getCart();
+
+
+
+        //BDD storage by user
+        /** @var User $user */
+        $user = $this->security->getUser();
+        if(!empty($user)){
+            $cartId = $user->getCartID();
+        }
+        $cart = $this->cartSessionStorage->getCartUser($cartId);
+
+        if(empty($cart)){
+            //Session storage
+            $cart = $this->cartSessionStorage->getCart();
+        }
+
+        $this->cartSessionStorage->setCart($cart);
 
         if (!$cart) {
             $cart = $this->cartFactory->create();
@@ -39,9 +60,16 @@ class CartManager
     {
         // Persist in database
         $this->entityManager->persist($cart);
-        $this->entityManager->flush();
+
         // Persist in session
         $this->cartSessionStorage->setCart($cart);
+        /** @var User $user */
+        $user = $this->security->getUser();
+        /*if(!empty($user)){
+            $userId = $user->getId();
+        }*/
+        $cart->setUser($user); //Associe le pannier à l'utilisateur connecté
+        $this->entityManager->flush();
     }
 }
 
