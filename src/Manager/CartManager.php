@@ -39,19 +39,16 @@ class CartManager
         $user = $this->security->getUser();
         if(!empty($user)){
             $cartId = $user->getCartID();
-        }
-        $cart = $this->cartSessionStorage->getCartUser($cartId);
-
-        if(empty($cart)){
-            //Session storage
+            $cart = $this->cartSessionStorage->getCartUser($cartId);
+        }else{
             $cart = $this->cartSessionStorage->getCart();
         }
-
-        $this->cartSessionStorage->setCart($cart);
 
         if (!$cart) {
             $cart = $this->cartFactory->create();
         }
+
+        $this->cartSessionStorage->setCart($cart);
 
         return $cart;
     }
@@ -63,6 +60,7 @@ class CartManager
 
         // Persist in session
         $this->cartSessionStorage->setCart($cart);
+
         /** @var User $user */
         $user = $this->security->getUser();
         /*if(!empty($user)){
