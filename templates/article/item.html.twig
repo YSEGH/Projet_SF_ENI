@@ -1,5 +1,4 @@
 <div class="item">
-<<<<<<< HEAD
     <div class="item_header">
       <a class="item_link" href="{{ path('app_detail_id', { id: i.id }) }}">
         <img src="{{ asset(i.image) }}" alt="{{ i.name }} image" />
@@ -13,24 +12,5 @@
       <li class="description">{{ i.description }}</li>
       <li class="price">{{ i.price }}€</li>
     </ul>
-=======
-  <img src="{{ asset(i.image) }}" alt="{{ i.name }} image" />
-  {#  <div class="add_to_cart">
-    <a href="{{ path('app_cart_add', { id: i.id }) }}">Ajouter au panier</a>
-  </div>#}
-  <div class="add_to_cart">
-    <a href="{{ path('app_detail_id', { id: i.id }) }}">Detail</a>
-  </div>
-  <ul>
-    <li class="name">
-      <a href="{{ path('app_detail_id', { id: i.id }) }}">{{ i.name }}</a>
-    </li>
-    <li class="category">
-      <a href="{{path('app_list', { categorie: i.category, min : min, max: max  })}}">{{ i.category }}</a>
-    </li>
-    <li class="description">{{ i.description }}</li>
-    <li class="price">{{ i.price }}€</li>
-  </ul>
->>>>>>> a48f735a9d570d088b4b4e7a987cca3df929b05a
 </div>
 

@@ -20,8 +20,6 @@
         <ul>
           <li class="navbar"><a href="{{ path('app_home') }}">Accueil</a></li>
           <li class="navbar"><a href="{{ path('app_list') }}">Boutique</a></li>
-<<<<<<< HEAD
-=======
           <li class="navbar"><a href="{{ path('app_cart') }}">Cart</a></li>
           {%  if is_granted('ROLE_ADMIN') %}
           <li class="navbar">
@@ -31,7 +29,6 @@
             <a href="{{ path('app_category_index') }}">Category CRUD</a>
           </li>
           {% endif %}
->>>>>>> a48f735a9d570d088b4b4e7a987cca3df929b05a
           <li class="navbar"><a href="{{ path('app_about') }}">A propos</a></li>
           <li class="navbar"><a href="{{ path('app_cart') }}"><img src="{{asset('img/cart.svg')}}" alt="cart"></a></li>
          
