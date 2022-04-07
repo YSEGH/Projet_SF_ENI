@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   flex: auto;
-  padding: 0 2rem 0 0;
+  padding: 10rem 2rem 0 0;
 }
 .content a {
   text-decoration: none;
