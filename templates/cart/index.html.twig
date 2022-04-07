@@ -77,8 +77,17 @@
             </div>
         {% else %}
             <div>
-                Your cart is empty. Go to the <a href="{{ path('app_home') }}">product list</a>.
+                <p>Your cart is empty.</p>
+                {% if app.user is not null%}
+                    <p>Go to the <a href="{{ path('app_home') }}">product list</a>.</p>
+                {% endif %}
+
             </div>
+            {% if app.user is null%}
+            <div>
+                Please log in to add items in your cart.
+            </div>
+                {% endif %}
         {% endif %}
     </div>
 {% endblock %}
