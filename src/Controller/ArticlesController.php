@@ -6,7 +6,6 @@ use App\Form\AddToCartType;
 use App\Manager\CartManager;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
-use App\Form\RangeFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-<<<<<<< HEAD
-=======
-
->>>>>>> a48f735a9d570d088b4b4e7a987cca3df929b05a
     #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
     public function list(Request $request, ArticleRepository $repo, CategoryRepository $cate_repo, $page = 0, $categorie = null, $min = null, $max = null): Response
 
@@ -67,14 +62,14 @@ class ArticlesController extends AbstractController
     public function detail($id, ArticleRepository $repo, Request $request, CartManager $cartManager): Response
     {
         $form = $this->createForm(AddToCartType::class);
-        $items = $repo->find($id);
-        if (!$items)
+        $item = $repo->find($id);
+        if (!$item)
             throw $this->createNotFoundException();
         $form->handleRequest($request);
         //Gestion du retour du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
-            $item->setProduct($items);
+            $item->setProduct($item);
 
             $cart = $cartManager->getCurrentCart();
             $cart
@@ -83,12 +78,12 @@ class ArticlesController extends AbstractController
 
             $cartManager->save($cart);
 
-            //return $this->redirectToRoute('app_detail_id', ['id' => $items->getId()]);
+            //return $this->redirectToRoute('app_detail_id', ['id' => $item->getId()]);
             return $this->redirectToRoute('app_cart');
         }
 
         return $this->render('articles/detail.html.twig', [
-            'items' => $items,
+            'item' => $item,
             'form' => $form->createView()
         ]);
     }

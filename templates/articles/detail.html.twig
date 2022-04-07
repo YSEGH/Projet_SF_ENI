@@ -3,16 +3,10 @@
 {% block body %}
 <div class="col-md-8">
 
-<<<<<<< HEAD
-    <h1> {{ item.name }}</h1>
-    <div>{{ item.description }}</div>
-
-{% endblock %}
-=======
-    <h1 class="mt-4 mt-md-0">{{ items.name }}</h1>
-    <h2>{{ items.price }} €</h2>
+    <h1 class="mt-4 mt-md-0">{{ item.name }}</h1>
+    <h2>{{ item.price }} €</h2>
     <hr>
-    <b>Description: </b>{{ items.description }}
+    <b>Description: </b>{{ item.description }}
     {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
     <div class="form-group">
         {{ form_label(form.quantity) }}
@@ -29,4 +23,3 @@
     {{ form_end(form) }}
 </div>
 {% endblock %}
->>>>>>> a48f735a9d570d088b4b4e7a987cca3df929b05a
