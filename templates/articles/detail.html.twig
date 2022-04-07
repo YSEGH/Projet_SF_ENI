@@ -1,10 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} | paginated items {% endblock %}
-
 {% block body %}
+<div class="col-md-8">
 
+<<<<<<< HEAD
     <h1> {{ item.name }}</h1>
     <div>{{ item.description }}</div>
 
 {% endblock %}
+=======
+    <h1 class="mt-4 mt-md-0">{{ items.name }}</h1>
+    <h2>{{ items.price }} €</h2>
+    <hr>
+    <b>Description: </b>{{ items.description }}
+    {{ form_start(form, {'attr': {'class': 'mt-4 p-4 bg-light'}}) }}
+    <div class="form-group">
+        {{ form_label(form.quantity) }}
+        {{ form_widget(form.quantity, {
+            'attr': {
+                'class': 'form-control ' ~ (form.quantity.vars.valid ? '' : 'is-invalid')
+            }
+        }) }}
+        <div class="invalid-feedback">
+            {{ form_errors(form.quantity) }}
+        </div>
+    </div>
+    {{ form_widget(form.add, {'attr': {'class': 'btn btn-warning w-25'}}) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+>>>>>>> a48f735a9d570d088b4b4e7a987cca3df929b05a
