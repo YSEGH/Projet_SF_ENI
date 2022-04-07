@@ -61,16 +61,17 @@ class ArticlesController extends AbstractController
     #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo, Request $request, CartManager $cartManager): Response
     {
+        //TODO transférer des boutons add to cart et quantity dans la boutique
         $form = $this->createForm(AddToCartType::class);
-        $item = $repo->find($id);
-        if (!$item)
+        $article = $repo->find($id);
+        if (!$article)
             throw $this->createNotFoundException();
         $form->handleRequest($request);
         //Gestion du retour du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
 
             $item = $form->getData();
-            $item->setProduct($item);
+            $item->setProduct($article);
 
             $cart = $cartManager->getCurrentCart();
             $cart
@@ -84,7 +85,7 @@ class ArticlesController extends AbstractController
         }
 
         return $this->render('articles/detail.html.twig', [
-            'item' => $item,
+            'article' => $article,
             'form' => $form->createView()
         ]);
     }
