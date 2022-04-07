@@ -5,16 +5,16 @@ namespace App\Controller;
 use App\Form\CartType;
 use App\Manager\CartManager;
 use App\Repository\OrderItemRepository;
-use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
 {
     #[Route('/cart', name: 'app_cart')]
-    public function index(CartManager $cartManager, Request $request, OrderItemRepository $orderItemRepository): Response
+    public function index(CartManager $cartManager, Request $request, OrderItemRepository $orderItemRepository, Session $session): Response
     {
         $cart = $cartManager->getCurrentCart();
         $form = $this->createForm(CartType::class, $cart);
@@ -37,6 +37,7 @@ class CartController extends AbstractController
             $nbitems += $nbi->getQuantity();
             $nbref++;
         }
+        $session->set('nbItemCart',$nbref);
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,

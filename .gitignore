@@ -19,3 +19,4 @@ yarn-error.log
 
 /.env
 /.idea/
+/config/packages/web_profiler.yaml

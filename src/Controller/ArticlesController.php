@@ -80,8 +80,8 @@ class ArticlesController extends AbstractController
 
             $cartManager->save($cart);
 
-            //return $this->redirectToRoute('app_detail_id', ['id' => $item->getId()]);
-            /* return $this->redirectToRoute('app_cart'); */
+
+            return $this->redirectToRoute('app_cart');
         }
 
         return $this->render('articles/detail.html.twig', [
