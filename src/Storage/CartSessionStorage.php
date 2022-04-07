@@ -18,9 +18,11 @@ class CartSessionStorage
         $this->requestStack = $requestStack;
         $this->cartRepository = $cartRepository;
     }
-
+    //TODO Add here the user ID to find the card ok the logged user
+    //https://ourcodeworld.com/articles/read/46/check-if-signed-user-have-a-specific-role-in-symfony-2-3
     public function getCart(): ?Order
     {
+        //TODO add check if the user is connected
         return $this->cartRepository->findOneBy([
             'id' => $this->getCartId(),
             'status' => Order::STATUS_CART

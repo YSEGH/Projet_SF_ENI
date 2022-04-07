@@ -63,6 +63,7 @@ class ArticlesController extends AbstractController
     #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo, Request $request, CartManager $cartManager): Response
     {
+        //TODO transférer des boutons add to cart et quantity dans la boutique
         $form = $this->createForm(AddToCartType::class);
         $items = $repo->find($id);
         if (!$items)
