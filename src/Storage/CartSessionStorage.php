@@ -29,6 +29,7 @@ class CartSessionStorage
         ]);
     }
 
+    //TODO Add here the userID to set the cart
     public function setCart(Order $cart): void
     {
         $this->getSession()->set(self::CART_KEY_NAME, $cart->getId());
