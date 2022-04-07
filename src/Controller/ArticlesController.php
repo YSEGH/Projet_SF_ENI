@@ -6,7 +6,6 @@ use App\Form\AddToCartType;
 use App\Manager\CartManager;
 use App\Entity\PropertySearch;
 use App\Form\PropertySearchType;
-use App\Form\RangeFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticlesController extends AbstractController
 {
     #All items are listed in one single page
-
     #[Route('/boutique/{page}/{categorie}', name: 'app_list', requirements: ['page' => '\d+'])]
     public function list(Request $request, ArticleRepository $repo, CategoryRepository $cate_repo, $page = 0, $categorie = null, $min = null, $max = null): Response
 
@@ -52,10 +50,10 @@ class ArticlesController extends AbstractController
     #[Route('/boutique/detail/{id}', name: 'app_detail_id', requirements: ['id' => '\d+'])]
     public function detail($id, ArticleRepository $repo): Response
     {
-        $items = $repo->find($id);
-        if (!$items)
+        $item = $repo->find($id);
+        if (!$item)
             throw $this->createNotFoundException();
-        return $this->render('articles/detail.html.twig', compact('items'));
+        return $this->render('articles/detail.html.twig', compact('item'));
     }
     */
 
@@ -65,14 +63,14 @@ class ArticlesController extends AbstractController
     {
         //TODO transférer des boutons add to cart et quantity dans la boutique
         $form = $this->createForm(AddToCartType::class);
-        $items = $repo->find($id);
-        if (!$items)
+        $item = $repo->find($id);
+        if (!$item)
             throw $this->createNotFoundException();
         $form->handleRequest($request);
         //Gestion du retour du formulaire
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
-            $item->setProduct($items);
+            $item->setProduct($item);
 
             $cart = $cartManager->getCurrentCart();
             $cart
@@ -81,12 +79,12 @@ class ArticlesController extends AbstractController
 
             $cartManager->save($cart);
 
-            //return $this->redirectToRoute('app_detail_id', ['id' => $items->getId()]);
+            //return $this->redirectToRoute('app_detail_id', ['id' => $item->getId()]);
             return $this->redirectToRoute('app_cart');
         }
 
         return $this->render('articles/detail.html.twig', [
-            'items' => $items,
+            'item' => $item,
             'form' => $form->createView()
         ]);
     }
