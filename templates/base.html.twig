@@ -12,31 +12,65 @@
   <body>
     <header>
       <div>
-        <img src="{{ asset('img/icon.png') }}" alt="logo dingtongs" />
-        <h4>DingTongs</h4>
+        <a href="{{path('app_home')}}">
+          <img src="{{ asset('img/icon.png') }}" alt="logo dingtongs" />
+        </a>
+        {# <h4>DingTongs</h4> #}
       </div>
-      <nav>
+      <nav {% if app.request.uri('app_home') %}class="home"{% endif %}>
         {% block nav %}
-        <ul>
-          <li class="navbar"><a href="{{ path('app_home') }}">Accueil</a></li>
-          <li class="navbar"><a href="{{ path('app_list') }}">Boutique</a></li>
-          <li class="navbar"><a href="{{ path('app_cart') }}">Cart</a></li>
-          {%  if is_granted('ROLE_ADMIN') %}
+        <ul >
           <li class="navbar">
-            <a href="{{ path('app_article_index') }}">Article CRUD</a>
+            <a href="{{ path('app_home') }}">Accueil</a>
           </li>
           <li class="navbar">
-            <a href="{{ path('app_category_index') }}">Category CRUD</a>
+            <a href="{{ path('app_list') }}">Boutique</a>
           </li>
-          {% endif %}
-          <li class="navbar"><a href="{{ path('app_about') }}">A propos</a></li>
-          <li class="navbar"><a href="{{ path('app_cart') }}"><img src="{{asset('img/cart.svg')}}" alt="cart"></a></li>
+          <li class="navbar">
+            <a href="{{ path('app_about') }}">A propos</a>
+          </li>
+          <li class="navbar">
+            <a href="{{ path('app_cart') }}">
+              {% if app.request.uri('app_home') %}
+                <img src="{{asset('img/cart_white.svg')}}" alt="cart">
+              {% else %}
+                <img src="{{asset('img/cart.svg')}}" alt="cart">
+              {% endif %}
+              
+            </a>
+          </li>
          
           {% if app.user %}
-            <li class="navbar"><a href="{{ path('app_account_infos') }}"><img src="{{asset('img/account.svg')}}" alt="account"></a></li>
-            <li><a href="{{ path('app_logout') }}"><img src="{{asset('img/logout.svg')}}" alt="logout"></a></li>
+            <li class="navbar">
+              <a href="{{ path('app_account_infos') }}">
+              {% if app.request.uri('app_home') %}
+                <img src="{{asset('img/account_white.svg')}}" alt="account">
+              {% else %}
+                <img src="{{asset('img/account.svg')}}" alt="account">
+              {% endif %}
+                
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('app_logout') }}">
+                {% if app.request.uri('app_home') %}
+                  <img src="{{asset('img/logout_white.svg')}}" alt="logout">
+                {% else %}
+                  <img src="{{asset('img/logout.svg')}}" alt="logout">
+                {% endif %}
+                
+              </a>
+            </li>
           {% else %}
-            <li><a href="{{ path('app_login') }}"><img src="{{asset('img/account.svg')}}" alt="login"></a></li>
+            <li>
+              <a href="{{ path('app_login') }}">
+                {% if app.request.uri('app_home') %}
+                  <img src="{{asset('img/account_white.svg')}}" alt="account">
+                {% else %}
+                  <img src="{{asset('img/account.svg')}}" alt="account">
+                {% endif %}
+              </a>
+            </li>
           {% endif %}
         </ul>
         {% endblock %}
@@ -45,7 +79,7 @@
 
     <main>{% block body %}{% endblock %}</main>
 
-    <footer>{% block footer %}{% endblock %}</footer>
+    {# <footer>{% block footer %}{% endblock %}</footer> #}
     {% block js %}
     <script src="{{ asset('js/app.js') }}"></script>
     {% endblock %}

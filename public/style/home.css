@@ -1,11 +1,73 @@
-.content {
+.content.home {
+  position: relative;
 }
 
-.content .home_bg {
+.content.home .home_bg {
+  height: 100vh;
+  overflow: hidden;
 }
-.content .home_bg img {
+.content.home .home_bg img {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
   transform: rotateX(180deg);
+}
+.content.home .text-container {
+  height: fit-content;
+  width: 30rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 10rem;
+  margin: auto;
+  color: #fff;
+}
+.content.home .text-container h1 {
+  font-size: 5rem;
+  font-weight: 500;
+  margin: 0;
+}
+.content.home .text-container p:nth-child(2) {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.content.home .text-container p:nth-child(3) {
+  margin: 0;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+.content.home .text-container .buttons-container {
+  margin-top: 1.5rem;
+  display: flex;
+}
+.content.home .text-container .buttons-container a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 10rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 200;
+  transition: 0.25s background-color;
+  margin-right: 1.5rem;
+  border: none;
+  text-transform: uppercase;
+}
+.content.home .text-container .buttons-container a:nth-child(1) {
+  color: #fff;
+  background-color: rgb(247, 75, 75);
+}
+.content.home .text-container .buttons-container a:nth-child(1):hover {
+  background-color: rgb(214, 50, 50);
+}
+.content.home .text-container .buttons-container a:nth-child(2) {
+  color: rgb(247, 75, 75);
+  background-color: #fff;
+}
+.content.home .text-container .buttons-container a:nth-child(2):hover {
+  font-weight: 400;
 }
