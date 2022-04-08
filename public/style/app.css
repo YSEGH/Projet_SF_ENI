@@ -19,6 +19,9 @@ body {
 .alert.danger {
   background-color: rgb(247, 75, 75);
 }
+input {
+  outline: none;
+}
 @keyframes popup {
   0% {
     transform: translateX(110%);

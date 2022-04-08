@@ -44,11 +44,17 @@
   font-weight: 400;
   text-align: left;
 }
-.item.details .text-container button {
+.item.details .text-container .item_link {
+  display: flex;
+  flex-direction: column;
+  width: 8rem;
+}
+.item.details .text-container .item_link button {
   color: #fff;
   border: none;
   height: 3.5rem;
   background-color: rgb(247, 75, 75);
   padding: 1rem;
   transition: 0.25s;
+  margin-top: 3rem;
 }
