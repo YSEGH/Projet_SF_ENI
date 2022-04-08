@@ -59,27 +59,45 @@ table.greyGridTable tbody td.buttons-container {
   text-decoration: none;
   width: 6rem;
 }
-table.greyGridTable a.show {
+button.edit {
+  margin: auto;
+  margin-top: 2rem;
+  color: #fff;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  background-color: rgb(61, 61, 63);
+  width: 6rem;
+  border: none;
+}
+a.show {
   margin-right: 0.5rem;
   background-color: rgb(111, 111, 221);
 }
-table.greyGridTable a.edit {
+a.edit {
   background-color: rgb(61, 61, 63);
 }
 .container a.create {
   margin-top: 0.5rem;
   background-color: rgb(99, 201, 99);
 }
-.container a.back {
+a.back {
+  display: block;
   width: fit-content;
+  margin: auto;
   margin-top: 2.5rem;
   color: rgb(28, 25, 236);
 }
-table.greyGridTable button.delete {
+button.delete {
   width: 6rem;
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
   border: none;
   color: #fff;
   background-color: rgb(235, 91, 47);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

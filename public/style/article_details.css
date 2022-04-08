@@ -57,4 +57,8 @@
   padding: 1rem;
   transition: 0.25s;
   margin-top: 3rem;
+  cursor: pointer;
+}
+.item.details .text-container .item_link button:hover {
+  background-color: rgb(214, 50, 50);
 }
