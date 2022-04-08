@@ -1,79 +1,91 @@
 .cart {
-    width: 100%;
-    height: 40rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
+.cart.index {
+  height: auto;
+}
+.cart.index input {
+  height: 3rem !important;
+}
 .cart {
-    margin-right: 4rem;
+  margin-right: 4rem;
 }
 
 .cart .text-container ul {
-    padding: 0;
+  padding: 0;
 }
 
 .cart .text-container li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .cart .text-container li.name {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    color: black;
-    font-size: 1.75rem;
-    font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: black;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
 .cart .text-container li.category a {
-    text-decoration: none;
-    display: block;
-    width: fit-content;
-    padding: 0 0.25rem;
-    color: #fff;
-    border-radius: 4px;
-    background-color: rgb(245, 204, 71);
-    text-transform: capitalize;
-    margin: 0.5rem 0 1rem 0;
-    transition: 0.25s;
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  padding: 0 0.25rem;
+  color: #fff;
+  border-radius: 4px;
+  background-color: rgb(245, 204, 71);
+  text-transform: capitalize;
+  margin: 0.5rem 0 1rem 0;
+  transition: 0.25s;
 }
 .cart .text-container li.category a:hover {
-    background-color: rgb(184, 150, 38);
+  background-color: rgb(184, 150, 38);
 }
 .cart .text-container li.price {
-    font-family: "Barlow", sans-serif;
-    color: black;
-    font-size: 3rem;
-    font-weight: 400;
-    text-align: left;
+  font-family: "Barlow", sans-serif;
+  color: black;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: left;
+}
+.cart.index .cart_link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .cart_link button {
-    color: #fff;
-    border: none;
-    height: 3.5rem;
-    background-color: rgb(247, 75, 75);
-    padding-left: 4rem;
-    padding-right: 4rem;
-    transition: 0.25s;
-    margin-top: 2rem;
-    cursor: pointer;
+  color: #fff;
+  border: none;
+  height: 3.5rem;
+  background-color: rgb(247, 75, 75);
+  padding-left: 4rem;
+  padding-right: 4rem;
+  transition: 0.25s;
+  margin-top: 2rem;
+  cursor: pointer;
 }
-
+.cart.index .cart_link button {
+  margin-top: 0;
+}
 .cart .text-container .cart_link button:hover {
-    background-color: rgb(214, 50, 50);
+  background-color: rgb(214, 50, 50);
 }
 
 .cart_link {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .item_header {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
