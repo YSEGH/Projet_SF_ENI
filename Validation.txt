@@ -12,9 +12,34 @@ Validation
 -> mdp qui ne respecte pas les critères OK
 -> redirection vers la page de connexion OK - corrigé -> modif push
 
+#Connexion
+-> Mauvais user warning OK
+-> Mauvais mdp OK
+-> warning POK : modifier en "Mauvais Email/Mot de passe"
+
 #User connecté
 ->Info personelles en construction TBD
 -> Accueil OK
 -> Boutique OK
 -> A propos POK (affiche le nombre d'item dans le panier à trasférer sur l'icone du panier site global)
 -> Panier vide OK - corrigé -> push correctif
+
+#Ajouter un article au panier
+-> Filtres inépendants OK
+-> Filtres combinés OK
+-> reset filtres OK
+-> Ajout d'un article OK
+-> Ajout avec qté vide OK
+-> Ajout avec qté négative POK (refresh de la page mais sans warning, pas pris en compte dans le panier)
+-> Ajout second article OK
+-> Modification Qté d'un article OK
+-> Remove un article OK
+-> Clear cart OK
+
+#Panier second utilisateur, persistance des données
+-> Création 2nd user OK
+-> Connexion OK
+-> Ajoute panier OK
+-> logout OK
+-> Log + pannier 1st user -> OK
+
