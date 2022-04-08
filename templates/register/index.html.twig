@@ -9,8 +9,6 @@
 {% block body %}
     {{form_errors(form_register)}}
     {{form_start(form_register)}}
-    
-    {{dump(form_register)}}
     <h1>Inscription</h1>
     {{form_widget(form_register)}}
     <p>Déja un compte ? <a href="{{path('app_login')}}">Me connecter.</a></p>
