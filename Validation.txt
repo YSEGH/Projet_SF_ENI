@@ -7,7 +7,6 @@ Validation
 # Etat BDD avec toutes les tables à jour vides
 -> Accueil OK
 -> Boutique OK (affichage filtres seulement)
--> A propos POK (affiche le nombre d'item dans le panier à trasférer sur l'icone du panier site global)
 ! attention le nombre d'item dans le panier reste en session, peut interférer sur un panier nul quand la BDD a été précédement vidée, n'est seulement mis à jour en session que lorsqu'on visite la page panier
 -> Page connexion OK
 
@@ -26,6 +25,9 @@ Validation
 ->Info personelles en construction TBD
 -> Accueil OK
 -> Boutique OK
+<<<<<<< HEAD
+-> Panier vide OK - corrigé -> push correctif
+=======
 -> A propos POK (affiche le nombre d'item dans le panier à trasférer sur l'icone du panier site global)
 -> Panier vide OK - corrigé -> push correctif
 
@@ -48,3 +50,4 @@ Validation
 -> logout OK
 -> Log + pannier 1st user -> OK
 
+>>>>>>> da0d4159cea93b1d83f1d98a9adab90dff93a47c

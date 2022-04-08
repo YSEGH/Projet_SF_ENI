@@ -111,6 +111,17 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+nav ul li a span.nombre_item {
+  background-color: rgb(247, 75, 75);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 nav.home ul li a {
   color: #fff;

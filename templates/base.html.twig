@@ -34,6 +34,11 @@
             <li class="navbar">
               <a href="{{ path('app_cart') }}">
                   <img src="{{asset('img/cart_white.svg')}}" alt="cart">
+                  {% if app.session.get('nbItemCart') is not null %}
+                      <span class="nombre_item">{{ app.session.get('nbItemCart')}}</span>
+                  {%  else %}
+                      <span class="nombre_item">0</span>
+                  {% endif %}
               </a>
             </li>
       
@@ -73,6 +78,11 @@
             <li class="navbar">
               <a href="{{ path('app_cart') }}">
                   <img src="{{asset('img/cart.svg')}}" alt="cart">
+                  {% if app.session.get('nbItemCart') is not null %}
+                      <span class="nombre_item">{{ app.session.get('nbItemCart')}}</span>
+                  {%  else %}
+                      <span class="nombre_item">0</span>
+                  {% endif %}
               </a>
             </li>
           
