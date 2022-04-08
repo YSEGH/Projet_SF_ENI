@@ -57,7 +57,7 @@
 .item ul {
   width: 100%;
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 .item ul li {
   list-style-type: none;
@@ -93,9 +93,8 @@
 
 .item ul li.price {
   font-family: "Barlow", sans-serif;
-
   color: black;
-  font-size: 2.25rem;
+  font-size: 3rem;
   font-weight: 400;
   text-align: right;
 }
