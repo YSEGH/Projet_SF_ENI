@@ -1,0 +1,34 @@
+- BDD avec articles existants
+	-> Aller sur le home du site
+	-> Créer un compte (utilisateur1)
+	-> Se connecter au compte
+		- Monter la page du profil
+	
+	-> Aller dans la boutique
+		- Filtre catégorie couleur
+		- Filtre prix
+		- Cliquer sur un item
+	-> L'ajouter au panier
+	-> En ajouter un second
+	-> Dans le panier
+		- Mettre à jour le nombre du premier article
+		- Supprimer le second
+		
+	-> Se déconnecter
+	
+	-> Créer un autre compte (utilisateur2)
+	-> Connexion
+	-> Remplir un autre panier
+	
+	-> Se déconnecter
+	
+	-> Se connecter (utilisateur1)
+	-> Aller au panier : le panier a été rechargé
+
+- Etat du site a déterminer
+	-> Dashboard administrateur
+
+- Site vide avec BDD vidée
+	-> loader les fixtures
+			php bin/console doctrine:fixtures:load
+	
