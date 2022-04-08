@@ -39,10 +39,12 @@ class RegisterController extends AbstractController
             $this->em->flush($user);
             return $this->redirectToRoute('app_login');
         }
+        dd($form_register->getErrors());
         //TODO rediriger vers la page de connexion
         return $this->render('register/index.html.twig', [
             'controller_name' => 'Inscription',
             'form_register' => $form_register->createView(),
+            'error' => $form_register->getErrors()
         ]);
     }
 }
