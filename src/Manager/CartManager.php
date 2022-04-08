@@ -39,8 +39,13 @@ class CartManager
 
         if (!empty($user)) {
             $cartId = $user->getCartID();
-            $cart = $this->cartSessionStorage->getCartUser($cartId);
-        } else {
+            if(!empty($cartId)){
+                $cart = $this->cartSessionStorage->getCartUser($cartId);
+            }else{
+                $cart = $this->cartSessionStorage->getCart();
+            }
+
+        }else{
             $cart = $this->cartSessionStorage->getCart();
         }
 

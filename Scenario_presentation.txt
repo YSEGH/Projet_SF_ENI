@@ -1,6 +1,8 @@
 - BDD avec articles existants
 	-> Aller sur le home du site
 	-> Créer un compte (utilisateur1)
+		- mdp moins de 8 caractèes
+		-> adresse mail invalide
 	-> Se connecter au compte
 		- Monter la page du profil
 	
