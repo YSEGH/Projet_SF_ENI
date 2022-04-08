@@ -1,27 +1,33 @@
 {% extends 'base.html.twig' %}
+{% block css %}
+<link rel="stylesheet" href="{{ asset('style/article_details.css') }}" />
+{% endblock %} 
+
 
 {% block body %}
-<div class="item">
+<div class="item details">
     <div class="item_header">
-        <img src="{{ article.image }}" alt="{{ article.slug }} image" />
+        <img src="{{ asset(article.image) }}" alt="{{ article.slug }} image" />
     </div>
-    <ul>
-        <li class="name">{{ article.name }}</li>
-        <li class="category">
-            {{ article.category }}</a>
-        </li>
-        <li class="description">{{ article.description }}</li>
-        <li class="price">{{ article.price }}€</li>
-    </ul>
-    {{ form_start(form) }}
-    <div>
-        {{ form_label(form.quantity) }}
-        {{ form_widget(form.quantity) }}
+    <div class="text-container">
+        <ul>
+            <li class="name">{{ article.name }}</li>
+            <li class="category">
+                <a href="{{path('app_list', { categorie: article.category})}}">{{ article.category }}</a>
+            </li>
+            <li class="description">{{ article.description }}</li>
+            <li class="price">{{ article.price }}€</li>
+        </ul>
+        {{ form_start(form) }}
         <div>
-            {{ form_errors(form.quantity) }}
+            {{ form_label(form.quantity) }}
+            {{ form_widget(form.quantity) }}
+            <div>
+                {{ form_errors(form.quantity) }}
+            </div>
         </div>
+        {{ form_widget(form.add) }}
+        {{ form_end(form) }}
     </div>
-    {{ form_widget(form.add) }}
-    {{ form_end(form) }}
 </div>
 {% endblock %}
