@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('style/cart.css') }}" />
+{% endblock %}
 
 {% block title %}Cart{% endblock %}
 
 {% block body %}
-    <div>
+    <div class="cart">
         <h1>Your Cart</h1>
         {% if cart.items.count > 0 %}
             <div>
@@ -13,7 +16,7 @@
                     <div>
                         <div>
                             <h5>Items</h5>
-                            <div>
+                            <div class="cart_link">
                                 {{ form_widget(form.save, {'attr': {'class': 'btn btn-warning'}}) }}
                                 {{ form_widget(form.clear, {'attr': {'class': 'btn btn-light'}}) }}
                             </div>
@@ -21,13 +24,16 @@
                         <ul>
                             {% for item in form.items %}
                                 <li>
-                                    <div>
-                                        <img src="https://via.placeholder.com/200x150" width="64" alt="Product image">
+                                    <div class="cart_header">
+                                        <img src="{{ asset(img[loop.index - 1]) }}" alt="Product image">
                                     </div>
-                                    <div>
-                                        <h5>{{ item.vars.data.product.name }}</h5>
-                                        <small>{{ item.vars.data.product.description[:50] }}...</small>
-                                        <div>
+                                    <div class="text-container">
+                                        <ul>
+                                            <li class="name">{{ item.vars.data.product.name }}</li>
+                                            <li class="description">{{ item.vars.data.product.description[:50] }}...</li>
+                                            <li class="price">{{ item.vars.data.product.price }}€</li>
+                                        </ul>
+                                        <div class="cart_link">
                                             <div>
                                                 {{ form_widget(item.quantity, {
                                                     'attr': {
@@ -40,9 +46,6 @@
                                             </div>
                                             {{ form_widget(item.remove, {'attr': {'class': 'btn btn-dark btn-sm'}}) }}
                                         </div>
-                                    </div>
-                                    <div>
-                                        <b>{{ item.vars.data.product.price }} €</b>
                                     </div>
                                 </li>
                             {% endfor %}
@@ -70,7 +73,7 @@
                             </li>
                         </ul>
                         <div>
-                            <a href="#" class="btn btn-warning w-100">Checkout</a>
+                            <a href="#">Checkout</a>
                         </div>
                     </div>
                 </div>
