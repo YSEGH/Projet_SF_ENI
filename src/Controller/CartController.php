@@ -33,6 +33,8 @@ class CartController extends AbstractController
         $nbitemsofcart = $orderItemRepository->findBy(['orderRef'=>$cart->getId()]);
         $nbitems = 0;
         $nbref = 0;
+        $img = [];
+
         foreach ($nbitemsofcart as $nbi){
             $nbitems += $nbi->getQuantity();
             $articles[] = $nbi->getProduct();
@@ -40,9 +42,12 @@ class CartController extends AbstractController
         }
         $session->set('nbItemCart',$nbref);
 
-        foreach ($articles as $article){
-            $img[] = $article->getImage();
+        if(!empty($articles)){
+            foreach ($articles as $article){
+                $img[] = $article->getImage();
+            }
         }
+
 
         return $this->render('cart/index.html.twig', [
             'cart' => $cart,

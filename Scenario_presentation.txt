@@ -1,4 +1,5 @@
-- BDD avec articles existants
+- BDD avec articles existants & compte admin avec panier rempli
+
 	-> Aller sur le home du site
 	-> Créer un compte (utilisateur1)
 		- mdp moins de 8 caractèes
@@ -18,19 +19,12 @@
 		
 	-> Se déconnecter
 	
-	-> Créer un autre compte (utilisateur2)
-	-> Connexion
-	-> Remplir un autre panier
-	
-	-> Se déconnecter
-	
-	-> Se connecter (utilisateur1)
-	-> Aller au panier : le panier a été rechargé
-
-- Etat du site a déterminer
-	-> Dashboard administrateur
+	-> Se connecter en tant qu'admin
+		- Dashboard administrateur
+		- Panier toujours sauvegardé
 
 - Site vide avec BDD vidée
+	-> Vider la BDD avec phpMyadmin
+	-> Plus rien en boutique
 	-> loader les fixtures
 			php bin/console doctrine:fixtures:load
-	
