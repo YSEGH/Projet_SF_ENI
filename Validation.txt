@@ -2,7 +2,7 @@ Validation
 # Etat BDD avec toutes les tables à jour vides
 -> Accueil OK
 -> Boutique OK (affichage filtres seulement)
--> About US POK
+-> A propos POK (affiche le nombre d'item dans le panier à trasférer sur l'icone du panier site global)
 ! attention le nombre d'item dans le panier reste en session, peut interférer sur un panier nul quand la BDD a été précédement vidée, n'est seulement mis à jour en session que lorsqu'on visite la page panier
 -> Page connexion OK
 
@@ -10,4 +10,11 @@ Validation
 -> Connexion avec un mauvais user (aucun en BDD) : POK (la page se rafraichit mais sans warning)
 -> adresse mail invalide OK
 -> mdp qui ne respecte pas les critères OK
--> redirection vers la page de connexion NOK -> modif push
+-> redirection vers la page de connexion OK - corrigé -> modif push
+
+#User connecté
+->Info personelles en construction TBD
+-> Accueil OK
+-> Boutique OK
+-> A propos POK (affiche le nombre d'item dans le panier à trasférer sur l'icone du panier site global)
+-> Panier vide OK - corrigé -> push correctif
