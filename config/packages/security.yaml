@@ -39,8 +39,15 @@ security:
   # Note: Only the *first* access control that matches will be used
   access_control:
     - { path: ^/mon-compte/articles, roles: ROLE_ADMIN }
-    - { path: ^/mon-compte/categories, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/articles/[0-9]+/edit, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/articles/[0-9]+, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/articles/new, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/category, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/category/[0-9]+/edit, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/category/[0-9]+, roles: ROLE_ADMIN }
+    - { path: ^/mon-compte/category/new, roles: ROLE_ADMIN }
     - { path: ^/mon-compte, roles: ROLE_USER }
+    - { path: ^/mon-compte/infos, roles: ROLE_USER }
 
 when@test:
   security:
