@@ -1,3 +1,8 @@
+OK = pass
+POK = no error, improvement required
+NOK = error displayed during web session
+
+
 Validation
 # Etat BDD avec toutes les tables à jour vides
 -> Accueil OK
