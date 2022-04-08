@@ -37,6 +37,7 @@ class RegisterController extends AbstractController
             );
             $this->em->persist($user);
             $this->em->flush($user);
+            return $this->redirectToRoute('app_login');
         }
         //TODO rediriger vers la page de connexion
         return $this->render('register/index.html.twig', [

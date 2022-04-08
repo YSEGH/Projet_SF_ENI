@@ -3,7 +3,13 @@
 {% block title %}{{ parent() }} | About us {% endblock %}
 
 {% block body %}
-    <p>Nombre de références dans le panier : {{ app.session.get('nbItemCart')}}</p>
+    <p>Nombre de références dans le panier :
+        {% if app.session.get('nbItemCart') is not null %}
+            {{ app.session.get('nbItemCart')}}
+        {%  else %}
+            0
+        {% endif %}
+    </p>
     <h1> About us </h1>
     <div>Shop history and details</div>
 {% endblock %}

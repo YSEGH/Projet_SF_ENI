@@ -1,0 +1,13 @@
+Validation
+# Etat BDD avec toutes les tables à jour vides
+-> Accueil OK
+-> Boutique OK (affichage filtres seulement)
+-> About US POK
+! attention le nombre d'item dans le panier reste en session, peut interférer sur un panier nul quand la BDD a été précédement vidée, n'est seulement mis à jour en session que lorsqu'on visite la page panier
+-> Page connexion OK
+
+#Création d'un user
+-> Connexion avec un mauvais user (aucun en BDD) : POK (la page se rafraichit mais sans warning)
+-> adresse mail invalide OK
+-> mdp qui ne respecte pas les critères OK
+-> redirection vers la page de connexion NOK -> modif push
